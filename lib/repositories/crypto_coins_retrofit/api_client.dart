@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'crypto_coins_repository.g.dart';
+part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://min-api.cryptocompare.com/data")
-abstract class CryptoCoinsRepository {
-  factory CryptoCoinsRepository(Dio dio) = _CryptoCoinsRepository;
+abstract class ApiClient {
+  factory ApiClient(Dio dio) = _ApiClient;
 
   @GET("/pricemultifull")
   Future<CryptoCompareResponse> getPrice(

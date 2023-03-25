@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
-import '../../../repositories/crypto_coins/crypto_coins_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:test_test/repositories/crypto_coins_retrofit/api_client.dart';
 import '../widgets/widgets.dart';
 
 class CryptoListScreen extends StatefulWidget {
@@ -13,6 +13,7 @@ class CryptoListScreen extends StatefulWidget {
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
 
+  final coinName = ['BTC', 'ETH', 'BNB', 'SOL', 'DOGE', 'SHIB', 'TRX', 'BUSD', 'XRP'];
 
   Future<void> _refreshData() async {
     setState(() {});
@@ -20,9 +21,6 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final dio = Dio();
-    final cryptoCoinsRepository = CryptoCoinsRepository(dio);
-    const coinName = ['BTC', 'ETH', 'BNB', 'SOL', 'DOGE', 'SHIB', 'TRX', 'BUSD', 'XRP'];
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
@@ -30,40 +28,46 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: _refreshData,
-        child: ListView.separated(
-            itemCount: coinName.length,
-            separatorBuilder: (context, index) => const Divider(),
-            itemBuilder: (context, i) {
-              return FutureBuilder<CryptoCompareResponse>(
-                future: cryptoCoinsRepository.getPrice(coinName[i], "USD"),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final coin = snapshot.data?.coins[coinName[i]]?["USD"];
-                    if (coin != null) {
-                      return CryptoCoinTile(
-                        coinName: coinName[i],
-                        imgUrl: coin.imageUrl,
-                        price: coin.price,
-                      );
-                    } else {
-                      return Container(
-                        alignment: Alignment.center,
-                        height: 100.0,
-                        child: const Text("Data unavailable"),
-                      );
-                    }
-                  } else if (snapshot.hasError) {
-                    return const Text("error");
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
-              );
-            }
+        child: FutureBuilder<CryptoCompareResponse>(
+          future: GetIt.I<ApiClient>().getPrice(coinName.map((i) => i.toString()).join(","), "USD"),
+          builder: (context, snapshot) {
+            return _buildBody(snapshot);
+          },
         ),
       ),
     );
   }
+
+  Widget _buildBody(AsyncSnapshot<CryptoCompareResponse> snapshot) {
+    if(snapshot.hasData) {
+      final coins = snapshot.data?.coins;
+      return _buildData(coins);
+    }
+    if(snapshot.hasError) return const Text('error');
+    return _buildProgressIndicator();
+  }
+
+  Widget _buildData(coins) {
+    if (coins != null) {
+      return ListView.separated(
+        itemCount: coinName.length,
+        separatorBuilder: (context, index) => const Divider(),
+        itemBuilder: (context, i) {
+          var coin = coins[coinName[i]]?['USD'];
+          return CryptoCoinTile(coinName: coinName[i], price: coin.price,imgUrl: coin.imageUrl);
+        }
+      );
+    } else{
+      return Container(
+        alignment: Alignment.center,
+        height: 100.0,
+        child: const Text("Data unavailable"),
+      );
+    }
+  }
+
+  Widget _buildProgressIndicator() => const Center(
+    child: CircularProgressIndicator(),
+  );
+
 }
