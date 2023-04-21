@@ -9,29 +9,13 @@ part of 'api_client.dart';
 CryptoCompareResponse _$CryptoCompareResponseFromJson(
         Map<String, dynamic> json) =>
     CryptoCompareResponse(
-      coins: (json['RAW'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-            k,
-            (e as Map<String, dynamic>).map(
-              (k, e) => MapEntry(k, Coin.fromJson(e as Map<String, dynamic>)),
-            )),
-      ),
+      coins: json['RAW'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$CryptoCompareResponseToJson(
         CryptoCompareResponse instance) =>
     <String, dynamic>{
       'RAW': instance.coins,
-    };
-
-Coin _$CoinFromJson(Map<String, dynamic> json) => Coin(
-      price: (json['PRICE'] as num).toDouble(),
-      imageUrl: json['IMAGEURL'] as String,
-    );
-
-Map<String, dynamic> _$CoinToJson(Coin instance) => <String, dynamic>{
-      'PRICE': instance.price,
-      'IMAGEURL': instance.imageUrl,
     };
 
 // **************************************************************************

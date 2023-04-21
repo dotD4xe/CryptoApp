@@ -41,6 +41,7 @@ dependencies:
   retrofit_generator: ^6.0.0+1
   json_annotation: ^4.8.0
   get_it: ^7.2.0
+  flutter_bloc: ^8.1.2
 
 dev_dependencies:
   flutter_test:

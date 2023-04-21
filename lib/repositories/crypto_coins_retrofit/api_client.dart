@@ -19,7 +19,7 @@ abstract class ApiClient {
 @JsonSerializable()
 class CryptoCompareResponse {
   @JsonKey(name: "RAW")
-  Map<String, Map<String, Coin>> coins;
+  Map<String, dynamic> coins;
 
   CryptoCompareResponse({required this.coins});
 
@@ -27,20 +27,4 @@ class CryptoCompareResponse {
       _$CryptoCompareResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CryptoCompareResponseToJson(this);
-}
-
-@JsonSerializable()
-class Coin {
-  @JsonKey(name: "PRICE")
-  double price;
-
-  @JsonKey(name: "IMAGEURL")
-  String imageUrl;
-
-  Coin({required this.price,
-        required this.imageUrl
-      });
-
-  factory Coin.fromJson(Map<String, dynamic> json) => _$CoinFromJson(json);
-  Map<String, dynamic> toJson() => _$CoinToJson(this);
 }

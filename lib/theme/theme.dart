@@ -5,7 +5,9 @@ final darkTheme = ThemeData(
     backgroundColor: Color.fromARGB(255, 31, 31, 31),
     elevation: 0,
     titleTextStyle: TextStyle(
-      color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
     )
   ),
   primarySwatch: Colors.yellow,
