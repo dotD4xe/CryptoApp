@@ -13,4 +13,8 @@ class CryptoListSuccess extends CryptoListState{
   final List<Coin> cryptoList;
 }
 
-class CryptoListFailure extends CryptoListState{}
+class CryptoListFailure extends CryptoListState{
+  CryptoListFailure({required this.exception});
+
+  final Object? exception;
+}
