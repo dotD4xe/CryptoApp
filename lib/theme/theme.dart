@@ -22,8 +22,9 @@ final darkTheme = ThemeData(
       fontSize: 20,
     ),
     labelSmall: TextStyle(
-        color: Colors.white.withOpacity(0.6),
-        fontWeight: FontWeight.w700,
-        fontSize: 14),
+      color: Colors.white.withOpacity(0.6),
+      fontWeight: FontWeight.w700,
+      fontSize: 14,
+    ),
   ),
 );
