@@ -1,20 +1,32 @@
 part of 'crypto_coin_details_bloc.dart';
 
-abstract class CryptoCoinDetailsState {}
+class BlocState  {}
 
-class CryptoCoinDetailsInitial extends CryptoCoinDetailsState {}
+class CryptoCoinDetailState extends BlocState {
+  final DetailCoin? cryptoCoin;
+  final bool isSuccess;
+  final bool isLoading;
+  final String error;
 
-class CryptoCoinDetailsLoading extends CryptoCoinDetailsState{}
 
-class CryptoCoinDetailsSuccess extends CryptoCoinDetailsState{
-  CryptoCoinDetailsSuccess ({
-    required this.cryptoCoin,
+  CryptoCoinDetailState({
+    this.cryptoCoin,
+    this.isSuccess = false,
+    this.isLoading = false,
+    this.error = ""
   });
-  final DetailCoin cryptoCoin;
-}
 
-class CryptoCoinDetailsFailure extends CryptoCoinDetailsState{
-  CryptoCoinDetailsFailure({required this.exception});
-
-  final Object? exception;
+  CryptoCoinDetailState copyWith({
+    DetailCoin? cryptoCoin,
+    bool? isSuccess,
+    bool? isLoading,
+    String? error,
+  }) {
+    return CryptoCoinDetailState(
+        cryptoCoin: cryptoCoin ?? this.cryptoCoin,
+        isSuccess: isSuccess ?? this.isSuccess,
+        isLoading: isLoading ?? this.isLoading,
+        error: error ?? this.error
+    );
+  }
 }

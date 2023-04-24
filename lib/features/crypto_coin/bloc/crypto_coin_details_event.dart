@@ -1,9 +1,21 @@
 part of 'crypto_coin_details_bloc.dart';
 
-abstract class CryptoCoinDetailsEvent {}
+class BlocEvent {}
 
-class LoadCryptoCoin extends CryptoCoinDetailsEvent {
-  LoadCryptoCoin(this.key, {this.completer});
-  final String key;
-  final Completer? completer;
+class LoadCryptoCoinEvent extends BlocEvent {
+  LoadCryptoCoinEvent._();
+
+  factory LoadCryptoCoinEvent.init() => LoadCryptoCoinInit();
+
+  factory LoadCryptoCoinEvent.loadCryptoList(String nameCoin) => LoadCryptoCoin(nameCoin);
+}
+
+class LoadCryptoCoinInit extends LoadCryptoCoinEvent {
+  LoadCryptoCoinInit() : super._();
+}
+
+class LoadCryptoCoin extends LoadCryptoCoinEvent {
+  final String nameCoin;
+
+  LoadCryptoCoin(this.nameCoin) : super._();
 }
