@@ -1,9 +1,19 @@
 part of 'crypto_list_bloc.dart';
 
-class CryptoListEvent {}
+class BlocEvent {}
 
-class LoadCryptoList extends CryptoListEvent {
-  LoadCryptoList({this.completer});
+class LoadCryptoListEvent extends BlocEvent {
+  LoadCryptoListEvent._();
 
-  final Completer? completer;
+  factory LoadCryptoListEvent.init() => LoadCryptoListInit();
+
+  factory LoadCryptoListEvent.loadCryptoList() => LoadCryptoList();
+}
+
+class LoadCryptoListInit extends LoadCryptoListEvent {
+  LoadCryptoListInit() : super._();
+}
+
+class LoadCryptoList extends LoadCryptoListEvent {
+  LoadCryptoList() : super._();
 }
