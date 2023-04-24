@@ -1,20 +1,32 @@
 part of 'crypto_list_bloc.dart';
 
-class CryptoListState {}
+class BlocState  {}
 
-class CryptoListInitial extends CryptoListState{}
-
-class CryptoListLoading extends CryptoListState{}
-
-class CryptoListSuccess extends CryptoListState{
-  CryptoListSuccess ({
-    required this.cryptoList,
-  });
+class CryptoListState extends BlocState {
   final List<Coin> cryptoList;
-}
+  final bool isSuccess;
+  final bool isLoading;
+  final String error;
 
-class CryptoListFailure extends CryptoListState{
-  CryptoListFailure({required this.exception});
 
-  final Object? exception;
+  CryptoListState({
+    this.cryptoList = const [],
+    this.isSuccess = false,
+    this.isLoading = false,
+    this.error = ""
+  });
+
+  CryptoListState copyWith({
+    List<Coin>? cryptoList,
+    bool? isSuccess,
+    bool? isLoading,
+    String? error,
+  }) {
+    return CryptoListState(
+      cryptoList: cryptoList ?? this.cryptoList,
+      isSuccess: isSuccess ?? this.isSuccess,
+      isLoading: isLoading ?? this.isLoading,
+      error: error ?? this.error
+    );
+  }
 }
