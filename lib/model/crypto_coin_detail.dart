@@ -14,5 +14,4 @@ class DetailCoin {
     required this.high24Hour,
     required this.low24Hours,
   });
-
 }
