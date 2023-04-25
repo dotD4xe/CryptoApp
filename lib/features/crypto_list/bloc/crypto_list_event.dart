@@ -1,6 +1,6 @@
 part of 'crypto_list_bloc.dart';
 
-class BlocEvent {}
+abstract class BlocEvent {}
 
 class LoadCryptoListEvent extends BlocEvent {
   LoadCryptoListEvent._();
