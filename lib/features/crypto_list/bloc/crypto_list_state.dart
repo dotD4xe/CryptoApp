@@ -1,6 +1,6 @@
 part of 'crypto_list_bloc.dart';
 
-abstract class BlocState extends Equatable { }
+abstract class BlocState extends Equatable {}
 
 class CryptoListState extends BlocState {
   final List<Coin> cryptoList;
