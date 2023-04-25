@@ -1,6 +1,8 @@
 part of 'crypto_list_bloc.dart';
 
-class BlocState  {}
+abstract class BlocState extends Equatable {
+
+}
 
 class CryptoListState extends BlocState {
   final List<Coin> cryptoList;
@@ -29,4 +31,12 @@ class CryptoListState extends BlocState {
       error: error ?? this.error
     );
   }
+
+  @override
+  List<Object?> get props => [
+    cryptoList,
+    isSuccess,
+    isLoading,
+    error
+  ];
 }

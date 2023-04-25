@@ -1,7 +1,7 @@
 
 import 'package:get_it/get_it.dart';
-import 'package:test_test/model/crypto_coin.dart';
-import 'package:test_test/model/crypto_coin_detail.dart';
+import 'package:test_test/repositories/model/crypto_coin.dart';
+import 'package:test_test/repositories/model/crypto_coin_detail.dart';
 import 'crypto_coins_retrofit/api_client.dart';
 
 class CryptoCoinsRepository {
