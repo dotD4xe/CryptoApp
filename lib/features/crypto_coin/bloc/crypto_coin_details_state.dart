@@ -2,8 +2,10 @@ part of 'crypto_coin_details_bloc.dart';
 
 class BlocState  {}
 
+
+
 class CryptoCoinDetailState extends BlocState {
-  final DetailCoin? cryptoCoin;
+  final Coin? cryptoCoin;
   final bool isSuccess;
   final bool isLoading;
   final String error;
@@ -17,7 +19,7 @@ class CryptoCoinDetailState extends BlocState {
   });
 
   CryptoCoinDetailState copyWith({
-    DetailCoin? cryptoCoin,
+    Coin? cryptoCoin,
     bool? isSuccess,
     bool? isLoading,
     String? error,

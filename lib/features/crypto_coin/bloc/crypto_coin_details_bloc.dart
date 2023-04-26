@@ -1,7 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_test/repositories/crypto_coin_repository.dart';
-import 'package:test_test/repositories/model/crypto_coin_detail.dart';
+import 'package:test_test/repositories/model/coin.dart';
 
 part 'crypto_coin_details_event.dart';
 part 'crypto_coin_details_state.dart';
