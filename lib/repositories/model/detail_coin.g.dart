@@ -13,6 +13,7 @@ DetailCoin _$DetailCoinFromJson(Map<String, dynamic> json) => DetailCoin(
       lastUpdate: DetailCoin._dateTimeFromJson(json['LASTUPDATE'] as int),
       high24Hour: (json['HIGH24HOUR'] as num).toDouble(),
       low24Hours: (json['LOW24HOUR'] as num).toDouble(),
+      open24Hour: (json['OPEN24HOUR'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$DetailCoinToJson(DetailCoin instance) =>
@@ -23,4 +24,5 @@ Map<String, dynamic> _$DetailCoinToJson(DetailCoin instance) =>
       'LASTUPDATE': DetailCoin._dateTimeToJson(instance.lastUpdate),
       'HIGH24HOUR': instance.high24Hour,
       'LOW24HOUR': instance.low24Hours,
+      'OPEN24HOUR': instance.open24Hour,
     };

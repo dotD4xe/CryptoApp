@@ -1,8 +1,6 @@
 part of 'crypto_list_bloc.dart';
 
-abstract class BlocState extends Equatable {
-
-}
+abstract class BlocState extends Equatable {}
 
 class CryptoListState extends BlocState {
   final List<Coin> cryptoList;
@@ -10,12 +8,11 @@ class CryptoListState extends BlocState {
   final bool isLoading;
   final String error;
 
-
   CryptoListState({
     this.cryptoList = const [],
     this.isSuccess = false,
     this.isLoading = false,
-    this.error = ""
+    this.error = "",
   });
 
   CryptoListState copyWith({
@@ -28,15 +25,11 @@ class CryptoListState extends BlocState {
       cryptoList: cryptoList ?? this.cryptoList,
       isSuccess: isSuccess ?? this.isSuccess,
       isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error
+      error: error ?? this.error,
     );
   }
 
   @override
-  List<Object?> get props => [
-    cryptoList,
-    isSuccess,
-    isLoading,
-    error
-  ];
+  List<Object?> get props =>
+      [cryptoList, isSuccess, isLoading, error];
 }

@@ -80,6 +80,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           coinName: coin.name,
           price: coin.details.priceInUSD,
           imgUrl: coin.details.imageUrl,
+          open24Hour: coin.details.open24Hour,
         );
       },
     );
