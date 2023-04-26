@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_test/repositories/crypto_coin_repository.dart';
-import 'package:test_test/repositories/model/crypto_coin.dart';
+import 'package:test_test/repositories/model/coin.dart';
 
 part 'crypto_list_event.dart';
 part 'crypto_list_state.dart';

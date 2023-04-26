@@ -53,7 +53,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
               width: 160,
               height: 160,
               child: Image.network(
-                  'https://www.cryptocompare.com/${state.cryptoCoin!.imageUrl}'),
+                  'https://www.cryptocompare.com/${state.cryptoCoin!.details.imageUrl}'),
             ),
             const SizedBox(height: 24),
             Text(
@@ -75,7 +75,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
               ),
               child: Center(
                 child: Text(
-                  "${state.cryptoCoin!.priceInUSD.toString()} \$",
+                  "${state.cryptoCoin!.details.priceInUSD.toString()} \$",
                   style: const TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.w700,
@@ -97,11 +97,11 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                 children: [
                   DataRow(
                     text: 'High 24 Hour',
-                    price: state.cryptoCoin!.high24Hour,
+                    price: state.cryptoCoin!.details.high24Hour,
                   ),
                   DataRow(
                     text: 'Low 24 Hour',
-                    price: state.cryptoCoin!.low24Hours,
+                    price: state.cryptoCoin!.details.low24Hours,
                   ),
                 ],
               ),
