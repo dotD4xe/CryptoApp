@@ -27,6 +27,9 @@ class DetailCoin extends Equatable {
   @JsonKey(name: "LOW24HOUR")
   final double low24Hours;
 
+  @JsonKey(name: "OPEN24HOUR")
+  final double open24Hour;
+
   const DetailCoin({
     required this.priceInUSD,
     required this.imageUrl,
@@ -34,6 +37,7 @@ class DetailCoin extends Equatable {
     required this.lastUpdate,
     required this.high24Hour,
     required this.low24Hours,
+    required this.open24Hour,
   });
 
   factory DetailCoin.fromJson(Map<String, dynamic> json) =>
@@ -53,5 +57,6 @@ class DetailCoin extends Equatable {
         lastUpdate,
         high24Hour,
         low24Hours,
+        open24Hour,
       ];
 }
